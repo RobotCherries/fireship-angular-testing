@@ -1,1 +1,16 @@
-<p>alert-button works!</p>
+<div class="content">
+  <h1>Alert Button</h1>
+
+  <article class="message is-warning" [hidden]="hideContent">
+    <div class="message-header">
+      <p>Warning code {{ severity }}</p>
+    </div>
+
+    <div class="message-body">
+      <!-- {{ content | async }} -->
+      {{ content }}
+    </div>
+  </article>
+
+  <button class="button is-info" (click)="toggle()" >Toggle Visibility</button>
+</div>

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MessageService } from '../services/message.service';
+import { BehaviorSubject, Observable, timer } from 'rxjs';
 
 @Component({
   selector: 'app-alert-button',
@@ -7,9 +9,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AlertButtonComponent implements OnInit {
 
-  constructor() { }
+  // content: Observable<any> = new BehaviorSubject('You have been warned.');
+  content     = 'You have been warned.';
+  hideContent = true;
+  severity    = 423;
 
-  ngOnInit(): void {
+  constructor() { }
+  // constructor(private msgService: MessageService) { }
+
+
+  ngOnInit() {
+    // this.content = this.msgService.getContent();
+  }
+
+  toggle() {
+    this.hideContent = !this.hideContent;
+  }
+
+  toggleAsync() {
+    timer(500).subscribe(() => {
+      this.toggle();
+    });
   }
 
 }
